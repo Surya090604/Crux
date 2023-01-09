@@ -1,7 +1,9 @@
 
+import 'package:ecell/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ecell/signup_page.dart';
 import 'package:get/get.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -10,6 +12,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var emailController =TextEditingController();
+  var passwordController=TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     double w=MediaQuery.of(context).size.width;
@@ -60,6 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         TextField(
+
+                          controller: emailController,
+                          style: TextStyle(color: Colors.blueAccent),
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.blueAccent)
@@ -84,6 +93,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                       children: [
                         TextField(
+                          style: TextStyle(color: Colors.blueAccent),
+                          controller: passwordController,
+                          obscureText: true,
                           decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.blueAccent)
@@ -103,27 +115,31 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height:40.0),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-                    height: (50.0),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(30.0),
-                      color: Colors.blueAccent,
-                      elevation: 4.0,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Center(
-                          child: Text(
-                            'LOGIN',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25.0,
-                              fontFamily: 'Montserrat'
-                            ),
+                  GestureDetector(onTap: (){
+                    AuthController.instance.login(emailController.text.trim(), passwordController.text.trim());
+                  },
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                      height: (50.0),
+                      child: Material(
+                        borderRadius: BorderRadius.circular(30.0),
+                        color: Colors.blueAccent,
+                        elevation: 4.0,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Center(
+                            child: Text(
+                              'LOGIN',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25.0,
+                                fontFamily: 'Montserrat'
+                              ),
+                            )
+                            ,
                           )
-                          ,
-                        )
+                        ),
                       ),
                     ),
                   ),

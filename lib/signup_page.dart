@@ -1,6 +1,9 @@
+import 'package:ecell/auth.dart';
 import 'package:ecell/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -12,6 +15,9 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
+    var emailController =TextEditingController();
+    var passwordController=TextEditingController();
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
       body: Column(
@@ -52,6 +58,7 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'EMAIL',
                     labelStyle: TextStyle(
@@ -65,6 +72,8 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 TextField(
+                  controller:passwordController ,
+                  obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'PASSWORD',
                     labelStyle: TextStyle(
@@ -78,25 +87,30 @@ class _SignupState extends State<Signup> {
             ),
           ),
           SizedBox(height: 30.0,),
-          Container(
-            padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-            child: Material(
-              borderRadius: BorderRadius.circular(40.0),
-              color: Colors.blueAccent,
-              elevation: 4.0,
-              child: GestureDetector(
-                onTap: () {},
-                child: Center(
-                  child:Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                      fontFamily: 'Montserrat'
-                  ),
+          GestureDetector(
+            onTap: (){
+              AuthController.instance.register(emailController.text.trim(), passwordController.text.trim());
+    },
+           child: Container(
+              padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+              child: Material(
+                borderRadius: BorderRadius.circular(40.0),
+                color: Colors.blueAccent,
+                elevation: 4.0,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Center(
+                    child:Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25.0,
+                        fontFamily: 'Montserrat'
+                    ),
+                    )
                   )
-                )
+                ),
               ),
             ),
           ),
@@ -134,9 +148,12 @@ class _SignupState extends State<Signup> {
               Icon(Icons.snapchat_rounded)
             ],
           )
-            ],
-      )
+
+              ]
+
+     )
     );
+
   }
 }
 
