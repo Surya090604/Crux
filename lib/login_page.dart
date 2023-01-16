@@ -41,21 +41,18 @@ class _LoginPageState extends State<LoginPage> {
                         Container(
                           padding: EdgeInsets.fromLTRB(15.0, 40.0,0.0 ,0.0),
                           child: Text(
-                            "Ecell",
+                            "Crux",
                             style: TextStyle(
-                              fontSize: 80.0,fontWeight: FontWeight.bold,
+                              fontSize: 100.0,fontWeight: FontWeight.bold,
                               color: Colors.blueAccent
                             ),
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(15.0, 105.0,0.0 ,0.0),
-                          child: Text(
-                            "Tech",
-                            style: TextStyle(
-                              fontSize: 80.0,fontWeight: FontWeight.bold,
-                              color: Colors.blueAccent
-                                )
+                        Text(
+                          "",
+                          style: TextStyle(
+                            fontSize: 80.0,fontWeight: FontWeight.bold,
+                            color: Colors.blueAccent
                               )
                             ),
                            ]
