@@ -17,7 +17,7 @@ class Welcome extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Text("The Entrepreneurship Cell is one of the largest and active, student-run organizations of BITS Pilani Hyderabad Campus that aims at igniting the entrepreneurial spirit in young minds by providing innovators with a platform to jump from ‘Idea’ to ‘Product’.",
+          Text("The members of Crux have been actively developing the campus technical culture since it was incepted in 2010.",
           style: TextStyle(
             fontSize: 20.0
           ),),
